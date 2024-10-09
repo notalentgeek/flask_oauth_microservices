@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:16.4
+    container_name: oauth_provider_db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./oauth_provider/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=oauth_provider
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin

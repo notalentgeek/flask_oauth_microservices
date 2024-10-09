@@ -17,3 +17,11 @@ As of 15:00, this repository is still under development.
 * Python 3.x is required.
 * PostgreSQL for the database
 * Docker is optional but recommended for containerization.
+
+# Commands
+
+## Clean-Up and Setup
+
+```console
+docker-compose down; Remove-Item -Path .\postgres -Force -Recurse; docker compose up -d --build; Start-Sleep -Seconds 30; flask db migrate; flask db upgrade; flask --app app run
+```

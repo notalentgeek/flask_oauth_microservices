@@ -1,40 +1,42 @@
-# Python related
-*.pyc
-__pycache__/
-venv/
-env/
-
-# Environment variables
-*.env
+# Byte-compiled / optimized / DLL files
+*.py[cod]
 
 # Database related
 *.db
-migrations/
-
-# Logs and temporary files
-*.log
 *.sqlite3
-*.tmp
-.DS_Store
+migrations/
 
 # Docker related
 *.bak
 .dockerignore
 
-# PyCharm IDE specific
-.idea/
-
-# VSCode specific
-.vscode/
-
-# Byte-compiled / optimized / DLL files
-*.py[cod]
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.pytest_cache/
+# Environment variables
+*.env
 
 # Flask specific
 instance/
+
+# Logs and temporary files
+.DS_Store
+*.log
+*.tmp
+
+# PostgreSQL
+postgres/
+
+# Python related
+__pycache__/
+env/
+venv/
+
+# PyCharm IDE specific
+.idea/
+
+# Unit test / coverage reports
+.htmlcov/
+.nox/
+.tox/
+.pytest_cache/
+
+# VSCode specific
+.vscode/
