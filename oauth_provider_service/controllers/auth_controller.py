@@ -19,13 +19,13 @@ def register():
     data = request.json
 
     if UserRepository.find_by_username(data['username']):
-        return jsonify({'message': 'User already exists'}), 400
+        return jsonify({'message': 'User Already Exists'}), 400
 
     hashed_password = generate_password_hash(data['password'])
     user = UserModel(username=data['username'], password=hashed_password)
     UserRepository.save(user)
 
-    return jsonify({'message': 'User registered successfully'}), 201
+    return jsonify({'message': 'User Registered Successfully'}), 201
 
 
 @auth_bp.route('/login', methods=['POST'])
@@ -40,8 +40,8 @@ def login():
     data = request.json
     user = UserRepository.find_by_username(data['username'])
 
-    if user and check_password_hash(user.password_hash, data['password']):
+    if user and check_password_hash(user.password, data['password']):
         access_token = create_access_token(identity=user.username)
         return jsonify(access_token=access_token)
 
-    return jsonify({'message': 'Invalid credentials'}), 401
+    return jsonify({'message': 'Invalid Credentials'}), 401

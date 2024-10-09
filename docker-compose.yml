@@ -5,7 +5,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ./oauth_provider/postgres:/var/lib/postgresql/data
+      - ./oauth_provider_service/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=oauth_provider
       - POSTGRES_USER=admin
