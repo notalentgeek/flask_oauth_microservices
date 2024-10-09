@@ -24,5 +24,12 @@ As of 15:00, this repository is still under development.
 ## Clean-Up and Setup
 
 ```console
-docker-compose down; Remove-Item -Path .\postgres -Force -Recurse; docker compose up -d --build; Start-Sleep -Seconds 30; flask db migrate; flask db upgrade; python app.py
+docker-compose down; Remove-Item -Path .\oauth_provider_service\postgres -Force -Recurse; docker compose up -d --build; Start-Sleep -Seconds 30; flask db migrate; flask db upgrade; python app.py
+```
+
+## Running Unit Test
+
+```console
+cd ./oauth_provider_service
+python -m unittest controllers.auth_controller_test
 ```

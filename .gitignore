@@ -1,22 +1,22 @@
-# Byte-compiled / optimized / DLL files
+# Byte-Compiled / Optimized / DLL Files
 *.py[cod]
 
-# Database related
+# Database Related
 *.db
 *.sqlite3
 migrations/
 
-# Docker related
+# Docker Related
 *.bak
 .dockerignore
 
-# Environment variables
+# Environment Variables
 *.env
 
-# Flask specific
+# Flask Specific
 instance/
 
-# Logs and temporary files
+# Logs And Temporary Files
 .DS_Store
 *.log
 *.tmp
@@ -24,19 +24,19 @@ instance/
 # PostgreSQL
 postgres/
 
-# Python related
+# Python Related
 __pycache__/
 env/
 venv/
 
-# PyCharm IDE specific
+# PyCharm IDE Specific
 .idea/
 
-# Unit test / coverage reports
+# Unit Test/Coverage Reports
 .htmlcov/
 .nox/
 .tox/
 .pytest_cache/
 
-# VSCode specific
+# VSCode Specific
 .vscode/

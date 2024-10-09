@@ -42,7 +42,8 @@ def call_company_b():
         return jsonify({"msg": "Invalid Authorization Header Format"}), 401
 
     # Directly Use the URL of Company B's Resource Endpoint
-    company_b_url = 'http://localhost:5002/resource'
+    # company_b_url = 'http://localhost:5002/resource'
+    company_b_url = 'http://company-b-service:5000/resource'
 
     headers = {'Authorization': f'Bearer {jwt_token}'}
 
