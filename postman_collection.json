@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "5a4d0309-0930-43f4-aa7f-dd4b436abff4",
+		"name": "Flask OAuth Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1309063"
+	},
+	"item": [
+		{
+			"name": "OAuth Provider Service - Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"{{dummy_user}}\",\r\n    \"password\": \"{{dummy_password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{oauth_provider_service_host}}/auth/register",
+					"protocol": "http",
+					"host": [
+						"{{oauth_provider_service_host}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth Provider Service - Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON Response\r",
+							"var bearerToken = pm.response.json().access_token;\r",
+							"\r",
+							"// Log the Values to the Postman Console\r",
+							"console.log('Bearer Token:', bearerToken);\r",
+							"\r",
+							"// Set These Values as Environment Variables\r",
+							"pm.environment.set(\"bearer_token\", bearerToken);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"{{dummy_user}}\",\r\n    \"password\": \"{{dummy_password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{oauth_provider_service_host}}/auth/login",
+					"protocol": "http",
+					"host": [
+						"{{oauth_provider_service_host}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth Provider Service - User Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://{{oauth_provider_service_host}}/user/info",
+					"protocol": "http",
+					"host": [
+						"{{oauth_provider_service_host}}"
+					],
+					"path": [
+						"user",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company A - Resource",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://{{company_a_service_host}}/resource",
+					"protocol": "http",
+					"host": [
+						"{{company_a_service_host}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company A - Call Company B",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://{{company_a_service_host}}/call-company-b",
+					"protocol": "http",
+					"host": [
+						"{{company_a_service_host}}"
+					],
+					"path": [
+						"call-company-b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company B - Resource",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://{{company_b_service_host}}/resource",
+					"protocol": "http",
+					"host": [
+						"{{company_b_service_host}}"
+					],
+					"path": [
+						"resource"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "oauth_provider_service_host",
+			"value": "localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "company_a_service_host",
+			"value": "localhost:5001",
+			"type": "string"
+		},
+		{
+			"key": "company_b_service_host",
+			"value": "localhost:5002",
+			"type": "string"
+		},
+		{
+			"key": "dummy_user",
+			"value": "user",
+			"type": "string"
+		},
+		{
+			"key": "dummy_password",
+			"value": "password",
+			"type": "string"
+		}
+	]
+}

@@ -1,17 +1,16 @@
 # Flask OAuth Microservices
 
-This project is a Python Flask-based microservice that handles OAuth authentication and user management. The service allows users to register, log in, and access protected resources using JWT (JSON Web Tokens). The project follows a clean architecture with separate modules for controllers, models, and repositories.
-
-As of 15:00, this repository is still under development.
+This project is a Python Flask-based microservices that handle OAuth authentication and user management. The services allows users to register, log in, and access protected resources using JWT (JSON Web Tokens). The project follows a clean architecture with separate modules for controllers, models, and repositories.
 
 # Features
 
 * User registration
-* User login with password hashing (using bcrypt)
+* User login with password hashing
 * JWT-based authentication
 * Separate layers for controllers, models, and repositories
 * Uses PostgreSQL as the database
 * Dockerized for easy deployment
+* Sample unit tests
 
 # Basic Setup
 
@@ -21,9 +20,16 @@ As of 15:00, this repository is still under development.
 
 # Commands
 
-## Clean-Up and Setup
+## Running
 
 ```console
+docker-compose up -d --build
+```
+
+## Fresh Start OAuth Provider Service
+
+```console
+cd ./oauth_provider_service
 docker-compose down; Remove-Item -Path .\oauth_provider_service\postgres -Force -Recurse; docker compose up -d --build; Start-Sleep -Seconds 30; flask db migrate; flask db upgrade; python app.py
 ```
 
